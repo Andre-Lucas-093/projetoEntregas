@@ -2,11 +2,116 @@
 <html>
 <head>
     <title>{% block titulo %}{% endblock %}</title>    
+      <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      background-color: #57558f;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: flex-start;
+      gap: 10px;
+      align-items: center;
+    }
+
+    header a {
+      padding: 8px 16px;
+      background-color: #57558f;
+      border: none;
+      color: white;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    header button:hover {
+      background-color: #666;
+    }
+
+    footer {
+      background-color: #57558f;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 0;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      font-size: 14px;
+      height: 50px;
+    }
+    
+    main {
+      padding: 20px;
+      min-height: 80vh;
+    }
+    main ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    .tabela-header,
+    main ul li {
+      display: flex;
+      padding: 10px 15px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    main ul li {
+      background-color: #eee;
+      padding: 10px 15px;
+      margin-bottom: 8px;
+      border-left: 4px solid #888;
+      border-radius: 4px;
+      transition: background-color 0.2s ease;
+    }
+    
+
+    main ul li:hover {
+      background-color: #ddd;
+    }
+
+    .col-id {
+      width: 10%;
+    }
+
+    .col-codigo {
+      width: 30%;
+    }
+
+    .col-nome {
+      width: 60%;
+    }
+    .col-id,
+    .col-codigo,
+    .col-nome {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    main ul li a:hover {
+      text-decoration: underline;
+      color: #007bff;
+    }
+    .tabela-header {
+      font-weight: bold;
+      background-color: #eee;
+    }
+  </style>
 </head>
 <body>
-
-{% block conteudo %}
-{% endblock %}
-
+  <header>
+    <a href="/">Início</a>
+    <a>Cadastrar entrega</a>
+    <a href="/membros">Entregadores</a>
+  </header>
+  <main>
+    {% block conteudo %}
+    {% endblock %}
+  </main>
+  <footer>
+    © 2025 Todos os direitos reservados.
+  </footer>
 </body>
 </html>

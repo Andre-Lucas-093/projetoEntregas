@@ -5,10 +5,20 @@
 {% endblock %}
 {% block conteudo %}
 <h1>Membros</h1>
-  
+      <div class="tabela-header">
+        <span class="col-id">ID</span>
+        <span class="col-codigo">Código</span>
+        <span class="col-nome">Nome</span>
+    </div>
+    
 <ul>
   {% for x in todos_membros %}
-    <li><a href="detalhe/{{ x.id }}">{{ x.nome }} {{ x.codigo }}</a></li>
+        <li>
+          <a class="col-id">{{x.id}}</span>
+          <a class="col-codigo">{{x.codigo}}</span>
+          <a href="detalhe/{{ x.id }}" class="col-nome">{{x.nome}}</a>
+      </li>  
+  <!-- <li><a href="detalhe/{{ x.id }}">{{ x.nome }} {{ x.codigo }}</a></li> -->
   {% endfor %}
 </ul>
 {% endblock %}

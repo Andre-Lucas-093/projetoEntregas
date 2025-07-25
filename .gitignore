@@ -2,3 +2,4 @@
 
 anotacoes.txt
 app_entregas/db.sqlite3
+*.pyc
