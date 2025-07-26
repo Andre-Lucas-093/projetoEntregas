@@ -1,0 +1,22 @@
+{% extends "index.html" %}
+
+{% block titulo %} 
+    Adicionar Membro
+{% endblock %}
+{% block conteudo %}
+<h1> Adicionar Membro </h1>
+<form method="POST" action="{% url 'cadastrar_entregador' %}">
+  {% csrf_token %}
+      <div>
+        <label for="codigo">Código:</label><br>
+        <input type="text" id="codigo" name="codigo" maxlength="2" class="small-input" pattern="\d{1,2}">
+      </div>
+
+      <div>
+        <label for="entregador">Entregador:</label><br>
+        <input type="text" id="entregador" name="entregador" maxlength="30">
+      </div>
+
+      <button type="submit" class="submit-btn">Enviar</button>
+    </form>
+{% endblock %}
