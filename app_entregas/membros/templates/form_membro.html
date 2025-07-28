@@ -1,0 +1,13 @@
+<div class="container mb-3 mt-3">
+          <h1 class="h4 fw-normal mb-3">{{acao}}</h1>
+        <label class="form-label" for="codigo">Código:</label><br>
+        <input value="{{codigo}}" type="text" id="codigo" name="codigo" maxlength="2" class="form-control form-control-sm w-25" pattern="\d{1,2}" title="Até 2 dígitos">
+      </div>
+
+      <div class="container mb-3 mt-3">
+        <label class="form-label" for="entregador">Entregador:</label><br>
+        <input class="form-control form-control-sm w-25" value="{{nome}}" type="text" id="entregador" name="entregador" maxlength="30">
+      </div>
+      <div class="container mb-3 mt-3">
+          <button type="submit" class="btn bg-dark text-light">Enviar</button>
+      </div>

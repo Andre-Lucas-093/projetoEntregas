@@ -1,25 +1,12 @@
 {% extends "index.html" %}
 
 {% block titulo %} 
-    Detalhes do entregador
+    Editar entregador
 {% endblock %}
 {% block conteudo %}
-
-<h1> Editar Cadastro </h1>
-<form method="POST" action="{% url 'atualizar_entregador' id %}">
-  {% csrf_token %}
-  <input type="hidden" name="_method" value="PUT">
-      <div>
-        <label for="codigo">Código:</label><br>
-        <input value="{{meumembro.codigo}}" type="text" id="codigo" name="codigo" maxlength="2" class="small-input" pattern="\d{1,2}" title="Até 2 dígitos">
-      </div>
-
-      <div>
-        <label for="entregador">Entregador:</label><br>
-        <input value="{{meumembro.nome}}" type="text" id="entregador" name="entregador" maxlength="30">
-      </div>
-
-      <button type="submit" class="submit-btn">Enviar</button>
-    </form>
-
-{% endblock %}
+  <form method="POST" action="{% url 'atualizar_entregador' slug %}">
+      <input type="hidden" name="_method" value="PUT">
+    {% csrf_token %}
+    {%include "form_membro.html" with acao="Atualizar Entregador" nome=meumembro.nome codigo=meumembro.codigo%}
+  </form>
+  {% endblock %}

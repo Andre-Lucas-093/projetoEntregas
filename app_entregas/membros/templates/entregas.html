@@ -1,0 +1,54 @@
+{% extends "index.html" %}
+
+{% block titulo %} 
+    Detalhes do entregador
+{% endblock %}
+{% block conteudo %}
+
+<div class="container mt-5">
+    <h2 class="text-center">Agenda de Entregas</h2>
+    <div class="row">
+        {% for dia in agenda %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-header bg-dark text-white">
+                        {{ dia.nome_dia }} - {{ dia.data|date:"d/m/Y" }}
+                    </div>
+                    <div class="card-body">
+                        {% for entrega in dia.entregas %}
+                            <div class="border rounded p-2 mb-2 d-flex justify-content-between align-items-start">
+                                <div>
+                                    <strong>{{ entrega.vendedor.nome }}</strong><br>
+                                    {{ entrega.endereco }}<br>
+                                    Veículo: {{ entrega.veiculo }}<br>
+                                    Distância: {{ entrega.distancia|default:"?" }} km<br>
+                                    Horário: {{ entrega.horario }}
+                                </div>
+                        <form method="post" action="{% url 'apagar_entrega' entrega.id %}" onsubmit="return confirm('Excluir entrega?')">
+                            {% csrf_token %}
+                            <button class="btn btn-sm btn-outline-danger ms-2" title="Excluir">
+                                <i class="bi bi-trash-fill"></i>
+                            </button>
+                        </form>
+                    </div>
+                        {% empty %}
+                            <p class="text-muted">Nenhuma entrega</p>
+                        {% endfor %}
+                        <!-- Botão abre modal com data pré-preenchida -->
+                        <form method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="data_entrega" value="{{ dia.data|date:'Y-m-d' }}">
+                            {{ form.vendedor }}
+                            {{ form.veiculo }}
+                            {{ form.endereco }}
+                            {{ form.horario }}
+                            <input type="hidden" name="data_entrega" value="{{ dia.data }}">
+                            <button class="btn btn-sm btn-primary mt-2">Agendar Entrega</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

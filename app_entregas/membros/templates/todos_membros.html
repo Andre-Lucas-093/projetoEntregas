@@ -4,25 +4,39 @@
     Controle de entregas - Todos os entregadores
 {% endblock %}
 {% block conteudo %}
-<h1>Entregadores</h1>
-      <div class="tabela-header">
-        <span class="col-id">ID</span>
-        <span class="col-codigo">Código</span>
-        <span class="col-nome">Nome</span>
-    </div>
-    
-<ul>
+<div class="row fw-bold border-bottom py-2 ms-2">
+  <div class="col-2">ID</div>
+  <div class="col-2">Código</div>
+  <div class="col-4">Nome</div>
+  <div class="col-2 text-center">Editar</div>
+  <div class="col-2 text-center">Excluir</div>
+</div>
+
+<ul class="list-group list-group-flush ms-2">
   {% for x in todos_membros %}
-        <li>
-          <a class="col-id">{{x.id}}</span>
-          <a class="col-codigo">{{x.codigo}}</span>
-          <a href="detalhe/{{ x.id }}" class="col-nome">{{x.nome}}</a>
-          <a href="editar_membro/{{x.id}}" class="col-editar edit-icon">✏️</a>
-      </li>  
-  <!-- <li><a href="detalhe/{{ x.id }}">{{ x.nome }} {{ x.codigo }}</a></li> -->
+    <li class="list-group-item">
+      <div class="row align-items-center">
+        <div class="col-2">{{ x.id }}</div>
+        <div class="col-2">{{ x.codigo }}</div>
+        <div class="col-4">
+          <a href="{% url 'detalhe' x.slug %}" class="text-decoration-none">{{ x.nome }}</a>
+        </div>
+        <div class="col-2 text-center">
+          <a href="{% url 'editar_membro' x.slug %}" class="btn btn-sm btn-outline-primary">✏️</a>
+        </div>
+        <div class="col-2 text-center">
+          <form method="POST" action="{% url 'excluir_membro' x.slug %}" onsubmit="return confirm('Tem certeza que deseja excluir este membro?')" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-sm btn-outline-danger">🗑️</button>
+          </form>
+        </div>
+      </div>
+    </li>
   {% endfor %}
-          <li>
-          <a href="adicionar_membro/" class="novo_membro">Adicionar entregador</a>
-      </li>  
+
+  <!-- Item para adicionar novo membro -->
+  <li class="list-group-item text-center">
+    <a href="{% url 'adicionar_membro' %}" class="btn btn-success mt-3">➕ Adicionar entregador</a>
+  </li>
 </ul>
 {% endblock %}

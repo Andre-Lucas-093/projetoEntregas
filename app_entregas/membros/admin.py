@@ -7,6 +7,7 @@ from .models import Membro
 
 class MembroAdmin(admin.ModelAdmin):
   list_display = ("nome", "codigo")
+  prepopulated_fields = {"slug": ("codigo", "nome")}
   
 admin.site.register(Membro, MembroAdmin)
 

@@ -3,15 +3,36 @@
 <html>
 <head>
     <title>{% block titulo %}{% endblock %}</title>    
-    <link rel="stylesheet" href="{% static 'style.css' %}">
+  {% load bootstrap5 %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <script src="{% static 'agendamento.js' %}"></script>
 </head>
 <body>
-  <header>
-    <a href="/">Início</a>
-    <a>Cadastrar entrega</a>
-    <a href="/membros">Entregadores</a>
-    <a href="/teste">Aba Teste</a>
-  </header>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <div class="container-sm">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="navbar-brand" href="#">Logo</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/">Início</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">Cadastrar entrega</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/membros">Entregadores</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/entregas">Entregas</a>
+      </li>
+    </ul>
+  </div>
+
+    
+</nav>
   <main>
     {% block conteudo %}
     {% endblock %}
