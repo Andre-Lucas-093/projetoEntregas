@@ -1,7 +1,7 @@
-# Created by venv; see https://docs.python.org/3/library/venv.html
-
 anotacoes.txt
 app_entregas/db.sqlite3
 *.pyc
 *.css
+app_entregas/arquivos_producao/admin/img/inline-delete.svg
 *.txt
+.vscode/settings.json
